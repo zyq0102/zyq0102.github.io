@@ -1,3 +1,4 @@
 # zyq12309.github.io
 This is a test of personal WEB site 01
-项目小组成员：周永庆、姬东余、庞硕东
+
+项目小组成员：ZYQ、JDY、PSD
