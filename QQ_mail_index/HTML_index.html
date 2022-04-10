@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ邮箱</title>
+    <link href="CSS_index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="content1">
+        <!--顶部图标栏-->
+        <div class="header">
+            <a href="https://mail.qq.com/" style="flex:1">
+                <img src="images/qqmail_logo.jpg" >
+            </a>
+            <div class="header_links" >
+                <a href="#">基本版</a>&nbsp;|&nbsp;<a href="#">English</a>&nbsp;|&nbsp;<a href="#">手机版</a>&nbsp;|&nbsp;<a href="#">企业邮箱</a>
+            </div>
+        </div>
+        <!--图片展示、登录框-->
+        <div class="content2">
+            <!--图片展示区-->
+            <div class="img_showarea">
+                <div class="login_pictures_picture">
+                    <div class="login_picture" id="photoList" >
+
+                    </div>
+                </div>
+
+                <div class="login_p" >
+                    <p class="login_p_tittle">QQ邮箱，常联系！</p>
+                    <div class="login_p_box"></div>
+
+                    <p class="login_p_moreinfo" href="#">了解更多表情符号</p>
+                </div>
+            </div>
+            <!--登录区-->
+            <div class="login_card">
+                <div class="login_tab">
+                    <div class="login_tab_login xm_login_card_tab_item_Active" id="wxLoginTab">微信登录</div>
+                    <div class="login_tab_login" id="qqLoginTab">QQ登录</div>
+                </div>
+                <div class="login_contentweixin" id="wxLoginCard">
+                    <div>
+                        <div>
+                            <div class="qrcode">
+                                <img src="images/qrcode.jpg" style="height: 180px; width: 180px;">
+                            </div>
+                            <div class="tixing">
+                                请使用微信扫描二维码登录
+                            </div>
+                            <div class="xm_login_card_state">
+                                <input type="button" class="auto_login">下次自动登录
+                            </div>
+                            <div class="impowerBox">
+                                微信与QQ帐号的邮箱数据不互通
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="login_contentQQ" id="qqLoginCard" style="display: none">
+                    <div class="QQcontent">
+                        <div class="inputClass">
+                            <input type="text" name="name" placeholder="支持QQ号/邮箱/手机号登录"/>
+                            <input type="text" name="fname" placeholder="QQ密码"/>
+                        </div>
+                        <div class="xm_login_card_stateQQ">
+                            <input type="button" class="auto_login">下次自动登录
+                        </div>
+                        <div class="but">
+                            登录
+
+                        </div>
+                        <div class="denglu">
+
+                        </div>
+                        <div class="QQwangji">
+                            <div style="flex:1">
+                                忘记密码？
+                            </div>
+                            <div>
+                                注册新账号
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--底部栏-->
+        <div class="footer">
+            <div class="footer_links">
+                <a href="#">关于腾讯</a>|
+                <a href="#">服务条款</a>|
+                <a href="#">隐私政策</a>|
+                <a href="#">客服中心</a>|
+                <a href="#">联系我们</a>|
+                <a href="#">帮助中心</a>|
+                <span style="color: #6f95c8"> ©1998 - 2021 Tencent Inc. All Rights Reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    var imageList=[
+        {
+            image:"./images/tg-bird1fbc69.png",
+            position:'127px 130px',
+            pList:["没有什么能够阻挡","没有什么能够阻挡","天马行空的生涯","你的心了无牵挂"]
+
+    },{image:"./images/tg-chang1ea8a2.png",
+        position:'234px 130px',
+            pList:["没有什么能够阻挡","没有什么能够阻挡","天马行空的生涯","你的心了无牵挂"]
+    },{image:"./images/tg-mail20f1b0.gif",
+        position:'234px 130px',
+            pList:["1987年9月14日21时07分","中国第一封电子邮件","从北京发往德国","“越过长城，走向世界”"]
+    },{image:"./images/tg-smile1e9c5d.jpg",
+        position:'234px 130px',
+            pList: ["1982年，第一张电脑笑脸诞生","今天，人们已经习惯用它来表达心情","现在，您也可以在邮件里","用:-)来传达一个微笑的表情"]
+    }];
+
+    let max=3
+    let num=parseInt(Math.random()*(max+1),10);
+    console.log(num,"num000");
+
+    var wxLoginTab = document.getElementById('wxLoginTab')
+    var qqLoginTab = document.getElementById('qqLoginTab')
+    var wxLoginCard = document.getElementById('wxLoginCard')
+    var qqLoginCard = document.getElementById('qqLoginCard')
+
+    var photoList=document.getElementById('photoList')
+    function renderList(list){
+        var login_p=document.querySelector('.login_p_box');
+        var pList=""
+        list.map((item)=>{
+            pList+="<p class='login_p_tittle_normal'>"+item+"</p>"
+        })
+        login_p.innerHTML=pList
+    }
+    renderList(imageList[num].pList)
+    photoList.style.backgroundImage="url("+imageList[num].image+")";
+    photoList.style.backgroundPosition=imageList[num].position
+    wxLoginTab.onclick = clickWxLoginTab
+    qqLoginTab.onclick = clickQQLoginTab
+    function clickWxLoginTab() {
+        if (wxLoginTab.className.indexOf('xm_login_card_tab_item_Active') === -1) {
+            wxLoginTab.className += ' xm_login_card_tab_item_Active'
+            qqLoginTab.className = qqLoginTab.className.replace(' xm_login_card_tab_item_Active', '')
+            wxLoginCard.style.display="block";
+            qqLoginCard.style.display="none"
+
+        }
+    }
+    function clickQQLoginTab() {
+        if (qqLoginTab.className.indexOf('xm_login_card_tab_item_Active') === -1) {
+            qqLoginTab.className += ' xm_login_card_tab_item_Active'
+            wxLoginTab.className = wxLoginTab.className.replace(' xm_login_card_tab_item_Active', '')
+            qqLoginCard.style.display="block";
+            wxLoginCard.style.display="none"
+        }
+    }
+
+
+
+</script>
