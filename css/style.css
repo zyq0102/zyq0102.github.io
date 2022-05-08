@@ -578,7 +578,7 @@ div ul li.last {
 }
 
 /*PC端*/
-@media (min-width: 769px) {
+@media (min-width: 799px) {
     .container {
         width: 1600px;
     }
